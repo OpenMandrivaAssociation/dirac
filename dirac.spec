@@ -1,14 +1,15 @@
 %define name dirac
-%define version 0.7.0
+%define version 0.8.0
 %define release %mkrel 1
 %define major 0.1
 %define libname %mklibname %name %major
+%define develname %mklibname -d %name
 
 Summary: Video Codec based on Wavelets
 Name: %{name}
 Version: %{version}
 Release: %{release}
-Source0: http://prdownloads.sourceforge.net/%name/%{name}-%{version}.tar.bz2
+Source0: http://prdownloads.sourceforge.net/%name/%{name}-%{version}.tar.gz
 Patch: dirac-0.7.0-werror.patch
 License: MPL/GPL/LGPL
 Group: Video
@@ -48,15 +49,15 @@ applications and standards.  These cover the parameters that need to
 be set for the encoder to work, such as block sizes and temporal
 prediction structures, which must otherwise be set by hand.
 
-%package -n %libname-devel
+%package -n %develname
 Group: Development/C++
 Summary: Development files of the Dirac Video codec
 Requires: %libname = %version
 Provides: lib%name-devel = %version-%release
 Provides: %name-devel = %version-%release
-Obsoletes: %name-devel
+Obsoletes: %name-devel %mklibname -d %name 0.1
 
-%description -n %libname-devel
+%description -n %develname
 Dirac is an open source video codec. It uses a traditional hybrid
 video codec architecture, but with the wavelet transform instead of
 the usual block transforms.  Motion compensation uses overlapped
@@ -123,7 +124,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %_libdir/libdirac*.so.0*
 
-%files -n %libname-devel
+%files -n %develname
 %defattr(-,root,root)
 %_includedir/%{name}
 %_libdir/libdirac*.so
