@@ -14,7 +14,6 @@ Patch: dirac-0.7.0-werror.patch
 License: MPL/GPL/LGPL
 Group: Video
 Url: http://sf.net/projects/dirac
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: doxygen
 BuildRequires: tetex-dvipdfm tetex-latex
 BuildRequires: libcppunit-devel
