@@ -1,5 +1,5 @@
 %define name dirac
-%define version 0.8.0
+%define version 0.9.0
 %define release %mkrel 1
 %define major 0.1
 %define libname %mklibname %name %major
