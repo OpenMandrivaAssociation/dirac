@@ -1,5 +1,5 @@
 %define name dirac
-%define version 0.9.1
+%define version 0.10.0
 %define release %mkrel 1
 %define major 0.1
 %define libname %mklibname %name %major
@@ -137,6 +137,7 @@ rm -rf $RPM_BUILD_ROOT
 %_bindir/BMPtoRGB
 %_bindir/RGB*
 %_bindir/UYVYtoRGB
+%_bindir/UYVYtoYUV422
 %_bindir/YUV*
 %_bindir/create_dirac_testfile.pl
 
