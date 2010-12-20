@@ -1,7 +1,7 @@
 %define name dirac
 %define version 1.0.2
 %define release %mkrel 4
-%define major 0.1
+%define major 0
 %define libname %mklibname %name %major
 %define develname %mklibname -d %name
 %define staticname %mklibname -s -d %name
@@ -12,7 +12,8 @@ Version: %{version}
 Release: %{release}
 Source0: http://prdownloads.sourceforge.net/%name/%{name}-%{version}.tar.gz
 Patch: dirac-0.7.0-werror.patch
-License: MPL/GPL/LGPL
+Patch1: dirac-1.0.2-backports.patch
+License: MPLv1.1
 Group: Video
 Url: http://sf.net/projects/dirac
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -36,6 +37,7 @@ prediction structures, which must otherwise be set by hand.
 %package -n %libname
 Group: System/Libraries
 Summary: Shared library of the Dirac Video codec
+Obsoletes: %{_lib}dirac0.1 < 1.0.2-4
 
 %description -n %libname
 Dirac is an open source video codec. It uses a traditional hybrid
@@ -111,9 +113,10 @@ prediction structures, which must otherwise be set by hand.
 %prep
 %setup -q
 %patch -p1
-autoconf
+%patch1 -p0
 
 %build
+./bootstrap
 %configure2_5x
 %make
 
