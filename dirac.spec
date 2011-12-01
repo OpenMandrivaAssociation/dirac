@@ -121,14 +121,14 @@ prediction structures, which must otherwise be set by hand.
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT installed-docs
+rm -rf %{buildroot} installed-docs
 %makeinstall_std
 mv %buildroot%_datadir/doc installed-docs
 #gw don't package unit tests
 rm -fv %buildroot%_bindir/dirac_unittest
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %if %mdkversion < 200900
 %post -n %libname -p /sbin/ldconfig
