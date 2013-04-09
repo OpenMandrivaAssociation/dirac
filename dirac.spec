@@ -1,5 +1,6 @@
 %define major	0
-%define libname	%mklibname %{name} %major
+%define libdec	%mklibname %{name}_decoder %{major}
+%define libenc	%mklibname %{name}_encoder %{major}
 %define devname %mklibname -d %{name}
 
 Summary:	Video Codec based on Wavelets
@@ -31,17 +32,27 @@ applications and standards.  These cover the parameters that need to
 be set for the encoder to work, such as block sizes and temporal
 prediction structures, which must otherwise be set by hand.
 
-%package -n %{libname}
+%package -n %{libdec}
 Summary:	Shared library of the Dirac Video codec
 Group:		System/Libraries
+Obsoletes:	%{_lib}dirac0 < 1.0.2-7
 
-%description -n %{libname}
+%description -n %{libdec}
+This package contains the shared library for %{name}.
+
+%package -n %{libenc}
+Summary:	Shared library of the Dirac Video codec
+Group:		System/Libraries
+Conflicts:	%{_lib}dirac0 < 1.0.2-7
+
+%description -n %{libenc}
 This package contains the shared library for %{name}.
 
 %package -n %{devname}
 Summary:	Development files of the Dirac Video codec
 Group:		Development/C++
-Requires:	%{libname} = %{version}
+Requires:	%{libdec} = %{version}
+Requires:	%{libenc} = %{version}
 Provides:	%{name}-devel = %{version}-%{release}
 Obsoletes:	%{_lib}dirac-static-devel < 1.0.2-7
 
@@ -91,8 +102,11 @@ rm -fv %{buildroot}%{_bindir}/dirac_unittest
 %{_bindir}/YUV*
 %{_bindir}/create_dirac_testfile.pl
 
-%files -n %{libname}
-%{_libdir}/libdirac*.so.%{major}*
+%files -n %{libdec}
+%{_libdir}/libdirac_decoder.so.%{major}*
+
+%files -n %{libenc}
+%{_libdir}/libdirac_encoder.so.%{major}*
 
 %files -n %{devname}
 %{_includedir}/%{name}
