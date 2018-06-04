@@ -6,7 +6,7 @@
 Summary:	Video Codec based on Wavelets
 Name:		dirac
 Version:	1.0.2
-Release:	16
+Release:	17
 License:	MPLv1.1
 Group:		Video
 Url:		http://sf.net/projects/dirac
