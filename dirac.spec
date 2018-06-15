@@ -82,7 +82,7 @@ prediction structures, which must otherwise be set by hand.
 
 %build
 ./bootstrap
-%configure2_5x \
+%configure \
 	--disable-static
 %make
 
