@@ -78,7 +78,7 @@ prediction structures, which must otherwise be set by hand.
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 %build
 ./bootstrap
