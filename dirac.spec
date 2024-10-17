@@ -9,7 +9,7 @@ Version:	1.0.2
 Release:	18
 License:	MPLv1.1
 Group:		Video
-Url:		http://sf.net/projects/dirac
+Url:		https://sf.net/projects/dirac
 Source0:	http://prdownloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Patch0:		dirac-0.7.0-werror.patch
 Patch1:		dirac-1.0.2-backports.patch
